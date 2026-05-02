@@ -1,0 +1,13 @@
+vendor/
+node_modules/
+dist/
+build/
+.cache/
+.idea/
+.vscode/
+*.zip
+*.rarget 
+*.7z
+*.sql
+*.bak
+*.log
