@@ -10,8 +10,11 @@ require_once "models/clinicstaff.model.php";
 require_once "controllers/patient.controller.php";
 require_once "models/patient.model.php";
 
-require_once "controllers\labassay.controller.php";
-require_once "models\labassay.model.php";
+require_once "controllers/labassay.controller.php";
+require_once "models/labassay.model.php";
+
+require_once "controllers/reset.controller.php";
+require_once "models/reset.model.php";
 
 $template = new ControllerTemplate();
-$template -> ctrTemplate();
+$template->ctrTemplate();

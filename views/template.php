@@ -1,6 +1,10 @@
 <!doctype html>
 <?php
   session_start();
+  function normalizeTemplateAccessLevel($value) {
+    $allowed = ['Full', 'View', 'Restricted'];
+    return in_array($value, $allowed) ? $value : 'Full';
+  }
 ?>
 <html
     lang="en"
@@ -71,7 +75,28 @@
        <script src="views/assets/vendor/libs/cleave-zen/cleave-zen.js"></script>
        <script src="views/assets/js/form-layouts.js"></script>
     </head>
-  <body>
+  <body
+    data-access-level="<?php
+      $defaultAccessLevel = 'Full';
+      if (isset($_GET['route'])) {
+        $previewRoute = basename($_GET['route']);
+        $routeAccessPreview = [
+          'diagnostics' => 'diagnostics',
+          'staffclinic' => 'clinicstaff',
+          'patientregistry' => 'patientregistry',
+          'labassays' => 'laboratoryassays',
+          'reports1' => 'reports',
+          'reports2' => 'reports',
+          'accessprivelege' => 'accessprivelege',
+          "reset" => "resetting.js"
+        ];
+        if (array_key_exists($previewRoute, $routeAccessPreview)) {
+          $sessionKey = $routeAccessPreview[$previewRoute];
+          $defaultAccessLevel = normalizeTemplateAccessLevel($_SESSION[$sessionKey] ?? 'Full');
+        }
+      }
+      echo htmlspecialchars($defaultAccessLevel);
+    ?>">
     <!-- Layout wrapper -->
     <?php 
       if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == "ok"){
@@ -92,14 +117,41 @@
                 $route = basename($_GET["route"]);
                 $allowedRoutes = [
                     'home',
+                    'diagnostics',
                     'staffclinic',
                     'patientregistry',
                     'labassays',
-                    'logout'
+                    'reports1',
+                    'reports2',
+                    'accessprivelege',
+                    'logout',
+                    'reset'
+                    
+                ];
+                $routeAccessMap = [
+                    'diagnostics' => 'diagnostics',
+                    'staffclinic' => 'clinicstaff',
+                    'patientregistry' => 'patientregistry',
+                    'labassays' => 'laboratoryassays',
+                    'reports1' => 'reports',
+                    'reports2' => 'reports',
+                    'accessprivelege' => 'accessprivelege',
+                    "reset" => "resetting"
                 ];
 
                 if (in_array($route, $allowedRoutes)) {
-                    include "modules/" . $route . ".php";
+                    if (array_key_exists($route, $routeAccessMap)) {
+                        $accessKey = $routeAccessMap[$route];
+                        $accessLevel = normalizeTemplateAccessLevel($_SESSION[$accessKey] ?? 'Full');
+
+                        if ($accessLevel === 'Restricted') {
+                            include "modules/404.php";
+                        } else {
+                            include "modules/" . $route . ".php";
+                        }
+                    } else {
+                        include "modules/" . $route . ".php";
+                    }
                 } else {
                     include "modules/404.php";
                 }
@@ -172,27 +224,31 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.8/jquery.inputmask.min.js"></script>
 
-    <?php
-    if (isset($route)) {
-      $routeScripts = [
-        "home" => ["home.js"],
-        "staffclinic" => [
-          "staffclinic.js",
-          "med.js"
-        ],
-        "patientregistry" => ["patientregistry.js"],
-        "labassays" => ["labassays.js"]
-      ];
+      <?php
+      if (isset($route)) {
+        $routeScripts = [
+          "home" => ["home.js"],
+          "staffclinic" => ["staffclinic.js","med.js"],
+          "patientregistry" => ["patientregistry.js"],
+          "labassays" => ["labassays.js"],
+          "accessprivelege" => ["accessprivelege.js"],
+          "reset" => ["resetting.js"]
+        ];
 
-      if (array_key_exists($route, $routeScripts)) {
-        foreach ($routeScripts[$route] as $script) {
-          $scriptPath = "views/js/" . $script;
-          if (file_exists($scriptPath)) {
-            echo '<script src="/databasesystems/' . $scriptPath . '"></script>';
+        if (array_key_exists($route, $routeScripts)) {
+          foreach ($routeScripts[$route] as $script) {
+            $scriptPath = "views/js/" . $script;
+            if (file_exists($scriptPath)) {
+              echo '<script src="' . $scriptPath . '"></script>';
+            }
           }
         }
       }
-    }
-    ?>
-  </body>
-</html>
+      ?>
+
+      <?php
+      $globalScriptPath = "views/js/access-control.js";
+      if (file_exists($globalScriptPath)) {
+        echo '<script src="' . $globalScriptPath . '"></script>';
+      }
+      ?>

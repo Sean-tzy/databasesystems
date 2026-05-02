@@ -1,22 +1,19 @@
 <?php
-class ControllerClinicStaff{
-	static public function ctrSaveClinicStaff($data){
-	   	$answer = (new ModelClinicStaff)->mdlSaveClinicStaff($data);
-		return $answer;
-	}
+class ControllerClinicStaff {
 
-	static public function ctrEditClinicStaff($data){
-	   	$answer = (new ModelClinicStaff)->mdlEditClinicStaff($data);
-		return $answer;
-	}
+    static public function ctrSaveClinicStaff($data){
+        return ModelClinicStaff::mdlSaveClinicStaff($data);
+    }
+
+    static public function ctrEditClinicStaff($data){
+        return ModelClinicStaff::mdlEditClinicStaff($data);
+    }
 
     static public function ctrClinicStaffList(){
-		$answer = (new ModelClinicStaff)->mdlClinicStaffList();
-		return $answer;
-	}
-	
-	static public function ctrSearchClinicStaff($empid){
-		$answer = (new ModelClinicStaff)->mdlSearchClinicStaff($empid);
-		return $answer;
-	}
+        return ModelClinicStaff::mdlClinicStaffList();
+    }
+
+    static public function ctrSearchClinicStaff($empid){
+        return ModelClinicStaff::mdlSearchClinicStaff($empid);
+    }
 }

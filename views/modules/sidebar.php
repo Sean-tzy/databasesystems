@@ -1,3 +1,13 @@
+<?php
+function sidebarAccessLevel($key){
+    return $_SESSION[$key] ?? "Full";
+}
+
+function sidebarCanAccess($key){
+    return sidebarAccessLevel($key) !== "Restricted";
+}
+?>
+
 <aside id="layout-menu" class="layout-menu menu-vertical menu">
     <div class="app-brand demo ">
     <a href="index.html" class="app-brand-link">
@@ -48,26 +58,72 @@
         <span class="menu-header-text" data-i18n="Main Menu">Main Menu</span>
     </li>
 
+    <?php if (sidebarCanAccess("diagnostics")): ?>
+    <li class="menu-item">
+        <a href="diagnostics" class="menu-link">
+        <i class="menu-icon icon-base ti tabler-focus-2"></i>
+        <div data-i18n="Diagnostics">Diagnostics</div>
+        </a>
+    </li>
+    <?php endif; ?>
+
+    <?php if (sidebarCanAccess("clinicstaff")): ?>
     <li class="menu-item">
         <a href="staffclinic" class="menu-link">
         <i class="menu-icon icon-base ti tabler-nurse"></i>
         <div data-i18n="Clinic Staff">Clinic Staff</div>
         </a>
     </li>
+    <?php endif; ?>
 
+    <?php if (sidebarCanAccess("patientregistry")): ?>
     <li class="menu-item">
         <a href="patientregistry" class="menu-link">
         <i class="menu-icon icon-base ti tabler-bed"></i>
         <div data-i18n="Patient Registry">Patient Registry</div>
         </a>
     </li>
+    <?php endif; ?>
 
+    <?php if (sidebarCanAccess("laboratoryassays")): ?>
     <li class="menu-item">
         <a href="labassays" class="menu-link">
         <i class="menu-icon icon-base ti tabler-flask"></i>
         <div data-i18n="Laboratory Assays">Laboratory Assays</div>
         </a>
     </li>
-                    
+    <?php endif; ?>
+
+    <?php if (sidebarCanAccess("reports")): ?>
+    <li class="menu-item">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon icon-base ti tabler-printer"></i>
+        <div data-i18n="Reports">Reports</div>
+        </a>
+
+        <ul class="menu-sub">
+            <li class="menu-item">
+                <a href="reports1" class="menu-link">
+                    <div data-i18n="Report 1">Report 1</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="reports2" class="menu-link">
+                    <div data-i18n="Report 2">Report 2</div>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <?php endif; ?>
+
+    <?php if (sidebarCanAccess("accessprivelege")): ?>
+    <li class="menu-item">
+        <a href="accessprivelege" class="menu-link">
+        <i class="menu-icon icon-base ti tabler-lock-plus"></i>
+        <div data-i18n="Access Privelege">Access Privelege</div>
+        </a>
+    </li>
+    <?php endif; ?>
+
     </ul>
 </aside>
