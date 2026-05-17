@@ -22,7 +22,7 @@ class ClinicStaffList {
         // =========================
         $html = '
         <div style="text-align:center;">
-            <h2 style="margin:0;">NUCARE CLINIC SYSTEM</h2>
+            <h2 style="margin:0;">LABTRIX CLINIC SYSTEM</h2>
             <h4 style="margin:0;">Clinic Staff Report</h4>
             <small>Generated on: '.date("F d, Y").'</small>
         </div>

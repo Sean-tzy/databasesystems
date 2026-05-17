@@ -80,24 +80,31 @@ class ModelClinicStaff {
         }
     }
 
-    static public function mdlClinicStaffList() {
+static public function mdlClinicStaffList() {
 
-        try {
-            $pdo = (new Connection())->connect();
+    try {
+        $pdo = (new Connection())->connect();
 
-            $stmt = $pdo->prepare("
-                SELECT empid, firstname, lastname, mi, designation
-                FROM clinicstaff
-                ORDER BY lastname, firstname
-            ");
+        $stmt = $pdo->prepare("
+            SELECT 
+                empid,
+                firstname,
+                lastname,
+                mi,
+                designation,
+                prc,
+                mobile
+            FROM clinicstaff
+            ORDER BY lastname, firstname
+        ");
 
-            $stmt->execute();
+        $stmt->execute();
 
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        } catch (Exception $e) {
-            return [];
-        }
+    } catch (Exception $e) {
+        return [];
     }
+}
 
 }
