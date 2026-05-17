@@ -35,6 +35,9 @@ $(function () {
 
     newStaff();
 
+    // =========================
+    // NEW BUTTON
+    // =========================
     $("#btn-new").click(function () {
         Swal.fire({
             title: 'Enlist new staff?',
@@ -53,6 +56,9 @@ $(function () {
         });
     });
 
+    // =========================
+    // SAVE BUTTON
+    // =========================
     $("#btn-save").click(function () {
 
         let requiredFields = [
@@ -111,6 +117,16 @@ $(function () {
         });
     });
 
+    // =========================
+    // PRINT BUTTON (ADDED)
+    // =========================
+    $("#btn-print").click(function () {
+        window.open("reports/sample.php", "_blank");
+    });
+
+    // =========================
+    // RESET FORM
+    // =========================
     function newStaff() {
         $("#firstname").val('');
         $("#lastname").val('');
@@ -126,6 +142,9 @@ $(function () {
         $("#firstname").focus();
     }
 
+    // =========================
+    // SAVE FUNCTION
+    // =========================
     function saveStaff() {
 
         let raw_datehired = $("#datehired").val();

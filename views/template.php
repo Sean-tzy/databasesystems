@@ -12,9 +12,20 @@
     dir="ltr"
     data-skin="default"
     data-bs-theme="light"
-    data-assets-path="views/assets/"
+    data-assets-path="/databasesystems/views/assets/"
     data-template="vertical-menu-template">
     <head>
+      <script>
+        (function () {
+          try {
+            var templateName = document.documentElement.getAttribute('data-template') || 'vertical-menu-template';
+            var storedTheme = localStorage.getItem('templateCustomizer-' + templateName + '--Theme');
+            if (storedTheme === 'dark' || storedTheme === 'light') {
+              document.documentElement.setAttribute('data-bs-theme', storedTheme);
+            }
+          } catch (e) {}
+        })();
+      </script>
       <meta charset="utf-8" />
       <meta
         name="viewport"
@@ -23,57 +34,58 @@
       <title>LABTRIX</title>
 
       <meta name="description" content="" />
-      <link rel="icon" type="image/x-icon" href="views/assets/img/favicon/favicon.ico" />
+
+<link rel="icon" type="image/x-icon" href="/databasesystems/source-template/full-version/assets/img/favicon/favicon.ico" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link
         href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&ampdisplay=swap"
         rel="stylesheet" />
 
-      <link rel="stylesheet" href="views/assets/vendor/fonts/iconify-icons.css" />
-      <script src="views/assets/vendor/libs/@algolia/autocomplete-js.js"></script>
-      <link rel="stylesheet" href="views/assets/vendor/libs/node-waves/node-waves.css" />
-      <link rel="stylesheet" href="views/assets/vendor/libs/pickr/pickr-themes.css" />
-      <link rel="stylesheet" href="views/assets/vendor/css/core.css" />
-      <link rel="stylesheet" href="views/assets/css/demo.css" />
-      <link rel="stylesheet" href="views/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-      <link rel="stylesheet" href="views/assets/vendor/libs/apex-charts/apex-charts.css" />
-      <link rel="stylesheet" href="views/assets/vendor/libs/swiper/swiper.css" />
-      <link rel="stylesheet" href="views/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
-      <link rel="stylesheet" href="views/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
-      <link rel="stylesheet" href="views/assets/vendor/fonts/flag-icons.css" />
 
-      <link rel="stylesheet" href="views/assets/vendor/css/pages/cards-advance.css" />
-      <script src="views/assets/vendor/js/helpers.js"></script>
-      <script src="views/assets/vendor/js/template-customizer.js"></script>
-      <script src="views/assets/js/config.js"></script>
+<link rel="stylesheet" href="/databasesystems/source-template/full-version/assets/vendor/fonts/iconify-icons.css" />
+<script src="/databasesystems/source-template/full-version/assets/vendor/libs/@algolia/autocomplete-js.js"></script>
+<link rel="stylesheet" href="/databasesystems/source-template/full-version/assets/vendor/libs/node-waves/node-waves.css" />
+<link rel="stylesheet" href="/databasesystems/source-template/full-version/assets/vendor/libs/pickr/pickr-themes.css" />
+<link rel="stylesheet" href="/databasesystems/source-template/full-version/assets/vendor/css/core.css" />
+<link rel="stylesheet" href="/databasesystems/source-template/full-version/assets/css/demo.css" />
+<link rel="stylesheet" href="/databasesystems/source-template/full-version/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+<link rel="stylesheet" href="/databasesystems/source-template/full-version/assets/vendor/libs/apex-charts/apex-charts.css" />
+<link rel="stylesheet" href="/databasesystems/source-template/full-version/assets/vendor/libs/swiper/swiper.css" />
+<link rel="stylesheet" href="/databasesystems/source-template/full-version/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
+<link rel="stylesheet" href="/databasesystems/source-template/full-version/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
+<link rel="stylesheet" href="/databasesystems/source-template/full-version/assets/vendor/fonts/flag-icons.css" />
 
-      <!-- LOGIN -->
-      <link rel="stylesheet" href="views/assets/vendor/libs/@form-validation/form-validation.css" />
-      <link rel="stylesheet" href="views/assets/vendor/css/pages/page-auth.css"/>
+<link rel="stylesheet" href="/databasesystems/source-template/full-version/assets/vendor/css/pages/cards-advance.css" />
+
+<!-- LOGIN -->
+<link rel="stylesheet" href="/databasesystems/source-template/full-version/assets/vendor/libs/@form-validation/form-validation.css" />
+<link rel="stylesheet" href="/databasesystems/source-template/full-version/assets/vendor/css/pages/page-auth.css"/>
 
       <!-- SELECT TAG -->
-      <link rel="stylesheet" href="views/assets/vendor/libs/select2/select2.css" />
-      <link rel="stylesheet" href="views/assets/vendor/libs/tagify/tagify.css" />
-      <link rel="stylesheet" href="views/assets/vendor/libs/bootstrap-select/bootstrap-select.css" />
-      <link rel="stylesheet" href="views/assets/vendor/libs/typeahead-js/typeahead.css"/>
+
+<link rel="stylesheet" href="/databasesystems/source-template/full-version/assets/vendor/libs/select2/select2.css" />
+<link rel="stylesheet" href="/databasesystems/source-template/full-version/assets/vendor/libs/tagify/tagify.css" />
+<link rel="stylesheet" href="/databasesystems/source-template/full-version/assets/vendor/libs/bootstrap-select/bootstrap-select.css" />
+<link rel="stylesheet" href="/databasesystems/source-template/full-version/assets/vendor/libs/typeahead-js/typeahead.css"/>
 
       <!-- PICKERS -->
-      <link rel="stylesheet" href="views/assets/vendor/libs/flatpickr/flatpickr.css"/>
-      <link rel="stylesheet" href="views/assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.css" />
-      <link rel="stylesheet" href="views/assets/vendor/libs/jquery-timepicker/jquery-timepicker.css" />
-      <link rel="stylesheet" href="views/assets/vendor/libs/pickr/pickr-themes.css"/>
+
+<link rel="stylesheet" href="/databasesystems/source-template/full-version/assets/vendor/libs/flatpickr/flatpickr.css"/>
+<link rel="stylesheet" href="/databasesystems/source-template/full-version/assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.css" />
+<link rel="stylesheet" href="/databasesystems/source-template/full-version/assets/vendor/libs/jquery-timepicker/jquery-timepicker.css" />
+<link rel="stylesheet" href="/databasesystems/source-template/full-version/assets/vendor/libs/pickr/pickr-themes.css"/>
 
       <!-- SWEET ALERT -->
-      <link rel="stylesheet" href="views/assets/vendor/libs/animate-css/animate.css" />
-      <link rel="stylesheet" href="views/assets/vendor/libs/sweetalert2/sweetalert2.css" />
+
+<link rel="stylesheet" href="/databasesystems/source-template/full-version/assets/vendor/libs/animate-css/animate.css" />
+<link rel="stylesheet" href="/databasesystems/source-template/full-version/assets/vendor/libs/sweetalert2/sweetalert2.css" />
 
       <!-- FORM VALIDATION -->
-      <link rel="stylesheet" href="views/assets/vendor/libs/@form-validation/form-validation.css" />
+<link rel="stylesheet" href="/databasesystems/source-template/full-version/assets/vendor/libs/@form-validation/form-validation.css" />
 
       <!-- STICKY ACTIONS -->
-       <script src="views/assets/vendor/libs/cleave-zen/cleave-zen.js"></script>
-       <script src="views/assets/js/form-layouts.js"></script>
+
     </head>
   <body
     data-access-level="<?php
@@ -170,57 +182,71 @@
       }
     ?>
     <!-- Overlay -->
-    <script src="views/assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="views/assets/vendor/libs/popper/popper.js"></script>
-    <script src="views/assets/vendor/js/bootstrap.js"></script>
-    <script src="views/assets/vendor/libs/node-waves/node-waves.js"></script>
-    <script src="views/assets/vendor/libs/pickr/pickr.js"></script>
-    <script src="views/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="views/assets/vendor/libs/hammer/hammer.js"></script>
-    <script src="views/assets/vendor/libs/i18n/i18n.js"></script>
-    <script src="views/assets/vendor/js/menu.js"></script>
 
-    <script src="views/assets/vendor/libs/apex-charts/apexcharts.js"></script>
-    <script src="views/assets/vendor/libs/swiper/swiper.js"></script>
-    <script src="views/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
-    <script src="views/assets/js/main.js"></script>
-    <script src="views/assets/js/dashboards-analytics.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/vendor/libs/jquery/jquery.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/vendor/libs/popper/popper.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/vendor/js/helpers.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/vendor/js/template-customizer.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/js/config.js"></script>
+<script>
+  (function () {
+    try {
+      var templateName = document.documentElement.getAttribute('data-template') || 'vertical-menu-template';
+      var storedTheme = localStorage.getItem('templateCustomizer-' + templateName + '--Theme');
+      if (storedTheme === 'dark' || storedTheme === 'light') document.documentElement.setAttribute('data-bs-theme', storedTheme);
+      // also support legacy fallback if storedTheme is missing but data-bs-theme already is dark:
+      if (!storedTheme && document.documentElement.getAttribute('data-bs-theme') === 'dark') return;
+    } catch (e) {}
+  })();
+</script>
+<script src="/databasesystems/source-template/full-version/assets/vendor/js/bootstrap.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/vendor/libs/node-waves/node-waves.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/vendor/libs/pickr/pickr.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/vendor/libs/hammer/hammer.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/vendor/libs/i18n/i18n.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/vendor/js/menu.js"></script>
 
-    <!-- FORM BASIC INPUT -->
-    <script src="views/assets/js/form-basic-inputs.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/vendor/libs/apex-charts/apexcharts.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/vendor/libs/swiper/swiper.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/js/main.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/js/dashboards-analytics.js"></script>
 
-    <!-- LOGIN / FORM VALIDATION -->
-    <script src="views/assets/vendor/libs/@form-validation/popular.js"></script>
-    <script src="views/assets/vendor/libs/@form-validation/bootstrap5.js"></script>
-    <script src="views/assets/vendor/libs/@form-validation/auto-focus.js"></script>
-    <script src="views/assets/js/main.js"></script>
-    <script src="views/assets/js/pages-auth.js"></script>
-    <script src="views/assets/js/form-validation.js"></script>
-    <script src="views/assets/js/form-layouts.js"></script>
+<!-- FORM BASIC INPUT -->
+
+<!-- LOGIN / FORM VALIDATION -->
+<script src="/databasesystems/source-template/full-version/assets/vendor/libs/@form-validation/popular.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/vendor/libs/@form-validation/bootstrap5.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/vendor/libs/@form-validation/auto-focus.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/js/pages-auth.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/js/form-validation.js"></script>
 
     <!-- SELECT TAG -->
-    <script src="views/assets/vendor/libs/select2/select2.js"></script>
-    <script src="views/assets/vendor/libs/tagify/tagify.js"></script>
-    <script src="views/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
-    <script src="views/assets/vendor/libs/typeahead-js/typeahead.js"></script>
-    <script src="views/assets/vendor/libs/bloodhound/bloodhound.js"></script>
 
-    <script src="views/assets/js/forms-selects.js"></script>
-    <script src="views/assets/js/forms-tagify.js"></script>
-    <script src="views/assets/js/forms-typeahead.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/vendor/libs/select2/select2.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/vendor/libs/tagify/tagify.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/vendor/libs/typeahead-js/typeahead.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/vendor/libs/bloodhound/bloodhound.js"></script>
+
+<script src="/databasesystems/source-template/full-version/assets/js/forms-selects.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/js/forms-tagify.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/js/forms-typeahead.js"></script>
 
     <!-- PICKERS -->   
-    <script src="views/assets/vendor/libs/moment/moment.js"></script>
-    <script src="views/assets/vendor/libs/flatpickr/flatpickr.js"></script>
-    <script src="views/assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js"></script>
-    <script src="views/assets/vendor/libs/jquery-timepicker/jquery-timepicker.js"></script>
-    <script src="views/assets/vendor/libs/pickr/pickr.js"></script>
 
-    <script src="views/assets/js/forms-pickers.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/vendor/libs/moment/moment.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/vendor/libs/flatpickr/flatpickr.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/vendor/libs/jquery-timepicker/jquery-timepicker.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/vendor/libs/pickr/pickr.js"></script>
+
 
     <!-- SWEET ALERT -->  
-    <script src="views/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
-    <script src="views/assets/js/extended-ui-sweetalert2.js"></script>
+
+<script src="/databasesystems/source-template/full-version/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+<script src="/databasesystems/source-template/full-version/assets/js/extended-ui-sweetalert2.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.8/jquery.inputmask.min.js"></script>
 

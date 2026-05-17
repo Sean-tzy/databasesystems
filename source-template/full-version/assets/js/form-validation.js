@@ -49,8 +49,10 @@
 //------------------------------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', function (e) {
   (function () {
-    const formValidationExamples = document.getElementById('formValidationExamples'),
-      formValidationSelect2Ele = jQuery(formValidationExamples.querySelector('[name="formValidationSelect2"]')),
+    const formValidationExamples = document.getElementById('formValidationExamples');
+    if (!formValidationExamples) return;
+
+    const formValidationSelect2Ele = jQuery(formValidationExamples.querySelector('[name="formValidationSelect2"]')),
       formValidationTechEle = jQuery(formValidationExamples.querySelector('[name="formValidationTech"]')),
       formValidationLangEle = formValidationExamples.querySelector('[name="formValidationLang"]'),
       formValidationHobbiesEle = jQuery(formValidationExamples.querySelector('.selectpicker')),
